@@ -11,6 +11,9 @@ public class javatest {
 		list.add("Thrall");
 		list.add("Sylvannas");
 		list.add("VolJin");
+
+		Personnage Cairne = new Personnage("Cairne",46, 20, 0, 5, 30, 1);
+		Personnage Thrall = new Personnage("Thrall",46, 20, 0, 5, 30, 1);
 		/*int Cairne = 45;
 		int Thrall = 40;
 		int Sylvannas = 30;
@@ -29,9 +32,12 @@ public class javatest {
 		}
 		System.out.println("Votre personnage a perdu  "+ randomDamage +" HP ");
 		System.out.println("Personnage 1 à "+ Cairnehp + " HP ");*/
-		Collections.shuffle(list);
-		System.out.println(list);
 		
+		//Collections.shuffle(list);
+		//System.out.println(list);
+		Cairne.attaque(Thrall);
+		Thrall.ThrallAfficher();
 	}
+	
 	
 }
