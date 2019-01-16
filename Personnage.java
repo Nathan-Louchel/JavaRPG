@@ -11,6 +11,7 @@ public class Personnage	 {
     int randomDamage = rand.nextInt(3) + 4;
     Random luckrand = new Random();
     int randomcounter = rand.nextInt(10);
+
     public Personnage (String nompers, int hp, int force, int intelligence, int agilité, int constitution, int lvl) {
         this.nompers = nompers;
         this.hp = hp;
@@ -19,21 +20,6 @@ public class Personnage	 {
         this.agilité = agilité;
         this.constitution = constitution;
         this.lvl = lvl;
-    }
-
-
-
-    private void recevoirDegatsPhysique() {
-
-        this.hp -= force / 2 + randomDamage;
-        rand.nextInt(10);
-        System.out.println(randomcounter);
-        if(randomcounter == 9) {
-        }
-
-        if(hp < 0) {
-            hp = 0;
-        }
     }
 
     public boolean alive() {
@@ -47,16 +33,21 @@ public class Personnage	 {
             return false;
         }
     }
-    public void attaque(Personnage personnageCible) {
-        if(alive() == false) {
-            System.out.println(this.nompers  + " est mort " );
-        }
-        else { personnageCible.recevoirDegatsPhysique();
-            System.out.println(this.nompers + " Attaque " +personnageCible);
-        }
 
+    public void attaque(Personnage personnageCible, boolean counter) {
+        if (!alive()) {
+            System.out.println(this.nompers + " est mort, il ne peut pas attaquer ");
+        } else {
+            personnageCible.hp -= force / 2 + randomDamage;
+            System.out.println(this.nompers + " Attaque " + personnageCible);
+        }
     }
 
+    public void checkerrorhp(){
+        if (this.hp < 0){
+            this.hp = 0;
+        }
+    }
     public int getHp() {
 
         return this.hp;
@@ -64,13 +55,13 @@ public class Personnage	 {
     }
     public void ThrallAfficher() {
         alive();
-        System.out.println("Thrall à "+ this.hp +"hp");
-        System.out.println(this.nompers + " est " + this.messageEtat);
+        checkerrorhp();
+        System.out.println("Thrall à "+ this.hp +"hp, " + this.nompers + " est " + this.messageEtat);
     }
     public void CairneAfficher() {
         alive();
-        System.out.println("Cairne à "+ this.hp +"hp");
-        System.out.println(this.nompers + " est " + this.messageEtat);
+        checkerrorhp();
+        System.out.println("Cairne à "+ this.hp +"hp, " + this.nompers + " est " + this.messageEtat);
     }
     public String toString() {
         return nompers;

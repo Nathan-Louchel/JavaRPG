@@ -9,21 +9,13 @@ public class main {
 		
 		Personnage Cairne = new Personnage("Cairne",45, 20, 0, 8, 40, 1);
 		Personnage Thrall = new Personnage("Thrall",35, 16, 10, 5, 30, 1);
-		Thrall.affichercounter();
-		Thrall.ThrallAfficher();
-		Cairne.CairneAfficher();
-		Thrall.attaque(Cairne);
-		Cairne.CairneAfficher();
-		Cairne.attaque(Thrall);
-		Thrall.ThrallAfficher();
-		Thrall.attaque(Cairne);
-		Cairne.CairneAfficher();
-		Cairne.attaque(Thrall);
-		Thrall.ThrallAfficher();
-		Thrall.attaque(Cairne);
-		Cairne.CairneAfficher();
-		Cairne.attaque(Thrall);
-		Thrall.ThrallAfficher();
+
+		do {
+			Thrall.attaque(Cairne,false);
+			Cairne.attaque(Thrall,false);
+			Thrall.ThrallAfficher();
+			Cairne.CairneAfficher();
+		}while (Cairne.alive() && Thrall.alive());
 	}
 	
 	
